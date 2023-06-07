@@ -36,7 +36,9 @@ const Navbar = () => {
             </div>
             <div className="navbar-end pe-5 space-x-4">
                 <img className='w-12 h-12 rounded-full bg-slate-500 border-2 border-white hover:border-yellow-300' src={logo} alt="" />
-                <button className='btn btn-outline text-white font-bold border-2 border-white hover:bg-white hover:border-yellow-300 hover:text-white hover:bg-transparent'>Login</button>
+                <Link to={'/logIn'}>
+                    <button className='btn btn-outline text-white font-bold border-2 border-white hover:bg-white hover:border-yellow-300 hover:text-white hover:bg-transparent'>Login</button>
+                </Link>
             </div>
         </div>
     );
