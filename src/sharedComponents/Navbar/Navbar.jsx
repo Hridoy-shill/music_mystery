@@ -31,13 +31,13 @@ const Navbar = () => {
                     <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
-                    <li><NavLink to={'/sadf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>
+                    <li><NavLink to={'/sadf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end pe-5 space-x-4">
-                <img className='w-12 h-12 rounded-full bg-slate-500 border-2 border-white hover:border-yellow-300' src={logo} alt="" />
+                <img className='w-12 h-12 rounded-full bg-slate-500 border-2 border-white hover:border-yellow-300 duration-500' src={logo} alt="" />
                 <Link to={'/logIn'}>
-                    <button className='btn btn-outline text-white font-bold border-2 border-white hover:bg-white hover:border-yellow-300 hover:text-white hover:bg-transparent'>Login</button>
+                    <button className='btn btn-outline text-white font-bold border-2 duration-500 border-white  hover:border-yellow-300 hover:text-white hover:bg-transparent'>Login</button>
                 </Link>
             </div>
         </div>

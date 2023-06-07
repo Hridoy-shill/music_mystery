@@ -16,7 +16,7 @@ const Banner = () => {
                         Crafted with care, a vessel of art,
                         It breathes life into notes, touching the heart.</p>
                     <div className='text-start mt-5'>
-                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent'>Learn more</button>
+                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent duration-500'>Learn more</button>
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@ const Banner = () => {
                         Its ebony and ivory keys unfold,
                         A tale of emotions, both gentle and bold.</p>
                     <div className='text-start mt-5'>
-                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent'>Learn more</button>
+                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent duration-500'>Learn more</button>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ const Banner = () => {
                         With nimble fingers, it dances and strums,
                         A guitar's magic, the heartstrings it plums.</p>
                     <div className='text-start mt-5'>
-                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent'>Learn more</button>
+                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent duration-500'>Learn more</button>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@ const Banner = () => {
                         With nimble fingers, it dances and strums,
                         A guitar's magic, the heartstrings it plums.</p>
                     <div className='text-start mt-5'>
-                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent'>Learn more</button>
+                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent duration-500'>Learn more</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@ const Banner = () => {
                         With sturdy frame, it resonates deep,
                         Awakening souls from their slumbered sleep.</p>
                     <div className='text-start mt-5'>
-                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent'>Learn more</button>
+                        <button className='p-2 btn btn-outline border-2 hover:border-yellow-300 hover:text-white text-white border-white hover:bg-transparent duration-500'>Learn more</button>
                     </div>
                 </div>
             </div>
