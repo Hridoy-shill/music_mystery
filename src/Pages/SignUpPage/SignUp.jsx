@@ -1,20 +1,55 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Lottie from "lottie-react";
 import loginMotion from '../../assets/LoginMotion.json'
 import { Link } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
+
 
 const SignUp = () => {
 
-    const handleSignUpData = (event) => {
-        event.preventDefault()
+    const [show, setShow] = useState()
+    const [error, setError] = useState('')
+    const { createNewUser } = useContext(AuthContext);
 
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-    }
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data)
+        const { name, email, password, confirmPassword, photo } = data;
+
+        if (password === confirmPassword) {
+            createNewUser(email, password)
+                .then(result => {
+                    const createdUser = result.user;
+
+                    updateProfile(createdUser, {
+                        displayName: name,
+                        photoURL: photo
+                    })
+
+                    Swal.fire({
+                        icon: 'success',
+                        text: 'SingUp successful',
+                    })
+                    setError('')
+                    reset()
+                })
+                .catch(error => {
+                    setError(error.message);
+                })
+        }
+        else{
+            setError('password not matched')
+            // return
+        }
+
+    };
+
+
     return (
         <>
             <Tittle heading={'SignUp'}></Tittle>
@@ -24,17 +59,16 @@ const SignUp = () => {
                         <Lottie animationData={loginMotion}></Lottie>
                     </div>
 
-
-                    <form onSubmit={handleSignUpData} className='p-10 space-y-4 w-[500px]'>
+                    <form onSubmit={handleSubmit(onSubmit)} className='p-10 space-y-4 w-[500px]'>
                         <div className='flex gap-2'>
                             <div className='flex flex-col'>
                                 <label htmlFor="name"><span className='font-bold text-lg'>Name:</span></label>
-                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" name="name" id="" placeholder='Type your name' required />
+                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" {...register("name", { required: true })} name="name" id="" placeholder='Type your name' required />
                             </div>
 
                             <div className='flex flex-col'>
                                 <label htmlFor="email"><span className='font-bold text-lg'>Email:</span></label>
-                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="email" name="email" id="" placeholder='Type your Email' required />
+                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="email" {...register("email", { required: true })} name="email" id="" placeholder='Type your Email' required />
                             </div>
                         </div>
 
@@ -42,27 +76,35 @@ const SignUp = () => {
 
                             <div className='flex flex-col'>
                                 <label htmlFor="password"><span className='font-bold text-lg'>Password:</span></label>
-                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="password" name="password" id="" placeholder='Type your password' required />
+                                <div className='flex relative'>
+                                    <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded w-[100%]' type={show ? 'text' : 'password'}  {...register("password", { required: true, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[!@#$%^&*])/ })} name="password" id="" placeholder='Type your password' required />
+                                    <p onClick={() => setShow(!show)} className='p-3 ms-1 absolute right-0 top-1'>{
+                                        show ? <span className=""><FaEyeSlash /></span> : <span className=""><FaEye /></span>
+                                    }</p>
+                                </div>
+                                {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
+                                {errors.password?.type === 'pattern' && <p className='text-red-600'>Password must have one capital character A-Z one special character !@#$%</p>}
                             </div>
 
                             <div className='flex flex-col'>
                                 <label htmlFor="Confirm Password"><span className='font-bold text-lg'>Confirm Password:</span></label>
-                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="password" name="Confirm-Password" id="" placeholder='Confirm Password' required />
+                                <div className='flex relative'>
+                                    <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type={show ? 'text' : 'password'} {...register("confirmPassword", { required: true })} name="confirmPassword" id="" placeholder='Confirm Password' required />
+                                    <p onClick={() => setShow(!show)} className='p-3 ms-1 absolute right-0 top-1'>{
+                                        show ? <span className=""><FaEyeSlash /></span> : <span className=""><FaEye /></span>
+                                    }</p>
+                                </div>
                             </div>
 
                         </div>
                         <div className='flex flex-col'>
                             <label htmlFor="Photo"><span className='font-bold text-lg'>Photo URL:</span></label>
-                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" name="photo" id="" placeholder='Photo URL' required />
+                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" {...register("photo", { required: true })} name="photo" id="" placeholder='Photo URL' required />
                         </div>
 
-
-
-
-
-                        {/* <div>
-                            <p className='font-bold text-red-700'>{error.message}</p>
-                        </div> */}
+                        <div>
+                            <p className='font-bold text-red-700'>{error}</p>
+                        </div>
 
                         <div>
                             <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'LogIn'} />
