@@ -42,7 +42,7 @@ const Navbar = () => {
                     <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
-                    {user && <li><NavLink to={'/sadf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
+                    {user && <li><NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
                 </ul>
             </div>
             <div className="navbar-end pe-5 space-x-4">
