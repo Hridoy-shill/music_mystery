@@ -26,15 +26,38 @@ const SignUp = () => {
 
 
                     <form onSubmit={handleSignUpData} className='p-10 space-y-4 w-[500px]'>
-                        <div className='flex flex-col'>
-                            <label htmlFor="email"><span className='font-bold text-lg'>Email:</span></label>
-                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="email" name="email" id="" placeholder='Type your Email' required />
+                        <div className='flex gap-2'>
+                            <div className='flex flex-col'>
+                                <label htmlFor="name"><span className='font-bold text-lg'>Name:</span></label>
+                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" name="name" id="" placeholder='Type your name' required />
+                            </div>
+
+                            <div className='flex flex-col'>
+                                <label htmlFor="email"><span className='font-bold text-lg'>Email:</span></label>
+                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="email" name="email" id="" placeholder='Type your Email' required />
+                            </div>
                         </div>
 
-                        <div className='flex flex-col'>
-                            <label htmlFor="password"><span className='font-bold text-lg'>Password:</span></label>
-                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="password" name="password" id="" placeholder='Type your password' required />
+                        <div className='flex gap-2'>
+
+                            <div className='flex flex-col'>
+                                <label htmlFor="password"><span className='font-bold text-lg'>Password:</span></label>
+                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="password" name="password" id="" placeholder='Type your password' required />
+                            </div>
+
+                            <div className='flex flex-col'>
+                                <label htmlFor="Confirm Password"><span className='font-bold text-lg'>Confirm Password:</span></label>
+                                <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="password" name="Confirm-Password" id="" placeholder='Confirm Password' required />
+                            </div>
+
                         </div>
+                        <div className='flex flex-col'>
+                            <label htmlFor="Photo"><span className='font-bold text-lg'>Photo URL:</span></label>
+                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" name="photo" id="" placeholder='Photo URL' required />
+                        </div>
+
+
+
 
 
                         {/* <div>
