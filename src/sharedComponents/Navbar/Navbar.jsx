@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../assets/logo.png'
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Navbar = () => {
+    const { user, LogOutUser } = useContext(AuthContext)
+    console.log(user);
+
+    const handleLogOut = () => {
+        LogOutUser()
+            .then()
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <div className="navbar bg-teal-500 p-2">
             <div className="navbar-start items-center">
@@ -31,14 +42,22 @@ const Navbar = () => {
                     <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
-                    <li><NavLink to={'/sadf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>
+                    {user && <li><NavLink to={'/sadf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
                 </ul>
             </div>
             <div className="navbar-end pe-5 space-x-4">
-                <img className='w-12 h-12 rounded-full bg-slate-500 border-2 border-white hover:border-yellow-300 duration-500' src={logo} alt="" />
-                <Link to={'/logIn'}>
-                    <button className='btn btn-outline text-white font-bold border-2 duration-500 border-white  hover:border-yellow-300 hover:text-white hover:bg-transparent'>Login</button>
-                </Link>
+                {user ?
+                    <>
+                        <img className='w-12 h-12 rounded-full bg-slate-500 border-2 border-white hover:border-yellow-300 duration-500' src={user.photoURL} alt="" title={user.displayName} />
+                        <button onClick={handleLogOut} className='btn btn-outline text-white font-bold border-2 duration-500 border-white  hover:border-yellow-300 hover:text-white hover:bg-transparent'>logOut</button>
+                    </>
+                    :
+                    <>
+                        <Link to={'/logIn'}>
+                            <button className='btn btn-outline text-white font-bold border-2 duration-500 border-white  hover:border-yellow-300 hover:text-white hover:bg-transparent'>Login</button>
+                        </Link>
+                    </>
+                }
             </div>
         </div>
     );

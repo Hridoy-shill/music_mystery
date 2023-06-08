@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Lottie from "lottie-react";
 import loginMotion from '../../assets/LoginMotion.json'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const LoginPage = () => {
 
     const [show, setShow] = useState()
+    const [error, setError] = useState('')
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
+
+    const { loginUser, createGoogleUser } = useContext(AuthContext)
 
     const handleLoginData = (event) => {
         event.preventDefault()
@@ -16,7 +24,33 @@ const LoginPage = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        loginUser(email, password)
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+                Swal.fire({
+                    icon: 'success',
+                    text: 'LogIn successful',
+                })
+                setError('')
+
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
+    const handleGoogleLogin = () => {
+        createGoogleUser()
+            .then(result => {
+                const loggedUser = result.loggedUser;
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                setError(error);
+            })
+    };
 
     return (
         <>
@@ -39,14 +73,14 @@ const LoginPage = () => {
                             <div className='flex items-center'>
                                 <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded w-full' type={show ? 'text' : 'password'} name="password" id="" placeholder='Type your password' required />
                                 <p onClick={() => setShow(!show)} className='border-2 p-3 ms-1 border-teal-500 rounded-md'>{
-                                    show ? <span className=" "><FaEyeSlash/></span> : <span className=""><FaEye/></span>
+                                    show ? <span><FaEyeSlash className='text-stone-400' /></span> : <span><FaEye className='text-stone-400' /></span>
                                 }</p>
                             </div>
                         </div>
 
-                        {/* <div>
-                            <p className='font-bold text-red-700'>{error.message}</p>
-                        </div> */}
+                        <div>
+                            <p className='font-bold text-red-700'>{error}</p>
+                        </div>
 
                         <div>
                             <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'LogIn'} />
@@ -56,7 +90,7 @@ const LoginPage = () => {
 
                         <div>
                             <div className='mt-4 flex justify-center'>
-                                <button className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
+                                <button onClick={handleGoogleLogin} className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
                             </div>
                         </div>
                         <div>

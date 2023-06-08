@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Lottie from "lottie-react";
 import loginMotion from '../../assets/LoginMotion.json'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
@@ -14,7 +14,8 @@ const SignUp = () => {
 
     const [show, setShow] = useState()
     const [error, setError] = useState('')
-    const { createNewUser } = useContext(AuthContext);
+    const { createNewUser, createGoogleUser } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -37,16 +38,36 @@ const SignUp = () => {
                     })
                     setError('')
                     reset()
+                    navigate('/')
                 })
                 .catch(error => {
                     setError(error.message);
                 })
         }
-        else{
+        else {
             setError('password not matched')
             // return
         }
 
+
+    };
+
+    const handleGoogleLogin = () => {
+        createGoogleUser()
+            .then(result => {
+                const loggedInUser = result.user;
+                console.log(loggedInUser);
+                Swal.fire({
+                    icon: 'success',
+                    text: 'LogIn successful',
+                })
+                setError('')
+                reset();
+                navigate('/')
+            })
+            .catch(error => {
+                setError(error);
+            })
     };
 
 
@@ -79,7 +100,7 @@ const SignUp = () => {
                                 <div className='flex relative'>
                                     <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded w-[100%]' type={show ? 'text' : 'password'}  {...register("password", { required: true, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[!@#$%^&*])/ })} name="password" id="" placeholder='Type your password' required />
                                     <p onClick={() => setShow(!show)} className='p-3 ms-1 absolute right-0 top-1'>{
-                                        show ? <span className=""><FaEyeSlash /></span> : <span className=""><FaEye /></span>
+                                        show ? <span><FaEyeSlash className='text-stone-400' /></span> : <span><FaEye className='text-stone-400' /></span>
                                     }</p>
                                 </div>
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
@@ -91,7 +112,7 @@ const SignUp = () => {
                                 <div className='flex relative'>
                                     <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type={show ? 'text' : 'password'} {...register("confirmPassword", { required: true })} name="confirmPassword" id="" placeholder='Confirm Password' required />
                                     <p onClick={() => setShow(!show)} className='p-3 ms-1 absolute right-0 top-1'>{
-                                        show ? <span className=""><FaEyeSlash /></span> : <span className=""><FaEye /></span>
+                                        show ? <span className=""><FaEyeSlash className='text-stone-400' /></span> : <span className=""><FaEye className='text-stone-400' /></span>
                                     }</p>
                                 </div>
                             </div>
@@ -114,7 +135,7 @@ const SignUp = () => {
 
                         <div>
                             <div className='mt-4 flex justify-center'>
-                                <button className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
+                                <button onClick={handleGoogleLogin} className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
                             </div>
                         </div>
                         <div>
