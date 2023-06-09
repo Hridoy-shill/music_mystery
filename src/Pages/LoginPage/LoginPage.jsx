@@ -6,16 +6,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../sharedComponents/SocialLogin/SocialLogin';
 
 const LoginPage = () => {
 
     const [show, setShow] = useState()
     const [error, setError] = useState('')
+
+    const { loginUser } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
 
-    const { loginUser, createGoogleUser } = useContext(AuthContext)
+    const from = location.state?.from?.pathname || "/"
 
     const handleLoginData = (event) => {
         event.preventDefault()
@@ -34,23 +36,12 @@ const LoginPage = () => {
                     text: 'LogIn successful',
                 })
                 setError('')
-
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 setError(error.message);
             })
     }
-    const handleGoogleLogin = () => {
-        createGoogleUser()
-            .then(result => {
-                const loggedUser = result.loggedUser;
-                console.log(loggedUser);
-                navigate(from, { replace: true })
-            })
-            .catch(error => {
-                setError(error);
-            })
-    };
 
     return (
         <>
@@ -89,9 +80,7 @@ const LoginPage = () => {
                         <div className="divider">OR</div>
 
                         <div>
-                            <div className='mt-4 flex justify-center'>
-                                <button onClick={handleGoogleLogin} className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                         <div>
                             <p className=' text-teal-500 font-bold text-center'>Don't have any account?<Link className='hover:underline' to='/signUp'>Create an account</Link></p>

@@ -37,6 +37,7 @@ const Footer = () => {
                     <a className="link link-hover font-medium">Terms of use</a>
                     <a className="link link-hover font-medium">Privacy policy</a>
                     <a className="link link-hover font-medium">Cookie policy</a>
+                    <p className='mt-2 border-s-4 border-yellow-300 bg-transparent p-2 font-bold text-base hover:bg-yellow-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-500 hover:rounded-md'>Call Us: <span>+880-190-888-888</span> </p>
                 </div>
 
             </footer>

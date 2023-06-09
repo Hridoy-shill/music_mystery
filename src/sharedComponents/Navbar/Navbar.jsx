@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className="navbar-end pe-5 space-x-4">
                 {user ?
                     <>
-                        <img className='w-12 h-12 rounded-full bg-slate-500 border-2 border-white hover:border-yellow-300 duration-500' src={user.photoURL} alt="" title={user.displayName} />
+                        <img className='w-12 h-12 rounded-full hover:bg-yellow-300 border-2 border-white hover:border-yellow-300 duration-500' src={user.photoURL} alt="" title={user.displayName} />
                         <button onClick={handleLogOut} className='btn btn-outline text-white font-bold border-2 duration-500 border-white  hover:border-yellow-300 hover:text-white hover:bg-transparent'>logOut</button>
                     </>
                     :

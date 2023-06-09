@@ -3,18 +3,19 @@ import Tittle from '../../Common_Component\'s/Tittle';
 import Lottie from "lottie-react";
 import loginMotion from '../../assets/LoginMotion.json'
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
+import SocialLogin from '../../sharedComponents/SocialLogin/SocialLogin';
 
 
 const SignUp = () => {
 
     const [show, setShow] = useState()
     const [error, setError] = useState('')
-    const { createNewUser, createGoogleUser } = useContext(AuthContext);
+    const { createNewUser } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -29,16 +30,30 @@ const SignUp = () => {
 
                     updateProfile(createdUser, {
                         displayName: name,
-                        photoURL: photo
+                        photoURL: photo,
                     })
+                    const savedUser = { name: name, email: email }
 
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'SingUp successful',
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(savedUser)
                     })
-                    setError('')
-                    reset()
-                    navigate('/')
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    text: 'SingUp successful',
+                                })
+                                setError('')
+                                reset();
+                                navigate('/')
+                            };
+                        })
+
                 })
                 .catch(error => {
                     setError(error.message);
@@ -46,30 +61,10 @@ const SignUp = () => {
         }
         else {
             setError('password not matched')
-            // return
         }
 
 
     };
-
-    const handleGoogleLogin = () => {
-        createGoogleUser()
-            .then(result => {
-                const loggedInUser = result.user;
-                console.log(loggedInUser);
-                Swal.fire({
-                    icon: 'success',
-                    text: 'LogIn successful',
-                })
-                setError('')
-                reset();
-                navigate('/')
-            })
-            .catch(error => {
-                setError(error);
-            })
-    };
-
 
     return (
         <>
@@ -128,15 +123,13 @@ const SignUp = () => {
                         </div>
 
                         <div>
-                            <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'LogIn'} />
+                            <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'SingUp'} />
                         </div>
 
                         <div className="divider">OR</div>
 
                         <div>
-                            <div className='mt-4 flex justify-center'>
-                                <button onClick={handleGoogleLogin} className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base'>logIn with <FaGoogle className='w-5 h-5'></FaGoogle></button>
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                         <div>
                             <p className=' text-teal-500 font-bold text-center'>Already have account?<Link className='hover:underline' to='/logIn'>LogIn</Link></p>
