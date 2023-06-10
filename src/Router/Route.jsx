@@ -6,6 +6,13 @@ import LoginPage from "../Pages/LoginPage/LoginPage";
 import SignUp from "../Pages/SignUpPage/SignUp";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import AllUsers from "../Pages/AdminPanel/Allusers";
+import AdminRoute from "./AdminRoute";
+import AdminHome from "../Pages/AdminPanel/AdminHome";
+import ManageClass from "../Pages/AdminPanel/ManageClass";
+import MusicianHome from "../Pages/MusicianPanel/MusicianHome";
+import AddClass from "../Pages/MusicianPanel/AddClass";
+import MyClasses from "../Pages/MusicianPanel/MyClasses";
+import MusicianRoute from "./MusicianRoute";
 
 const router = createBrowserRouter([
     {
@@ -32,9 +39,33 @@ const router = createBrowserRouter([
         element:<DashboardLayout></DashboardLayout>,
         children:[
             {
+                path:'/dashboard/adminHome',
+                element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+            },
+            {
+                path:'/dashboard/manageClass',
+                element:<AdminRoute><ManageClass></ManageClass></AdminRoute>
+            },
+            {
                 path:'/dashboard/allUsers',
-                element:<AllUsers></AllUsers>
+                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+
+            // musician routes
+
+            {
+                path:'/dashboard/musicianHome',
+                element:<MusicianRoute><MusicianHome></MusicianHome></MusicianRoute>
+            },
+            {
+                path:'/dashboard/addClass',
+                element:<MusicianRoute><AddClass></AddClass></MusicianRoute>
+            },
+            {
+                path:'/dashboard/myClasses',
+                element:<MusicianRoute><MyClasses></MyClasses></MusicianRoute>
             }
+            
         ]
     }
 ]);
