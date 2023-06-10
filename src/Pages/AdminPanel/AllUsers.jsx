@@ -6,12 +6,11 @@ import Swal from 'sweetalert2';
 
 
 const AllUsers = () => {
-    
-    const { data: users = [], refetch } = useQuery(['allUsers'], async () => 
-    {
+
+    const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
         const token = localStorage.getItem('access-token');
-        const res = await fetch('http://localhost:5000/allUsers',{
-            headers:{
+        const res = await fetch('http://localhost:5000/allUsers', {
+            headers: {
                 authorization: `bearer ${token}`
             }
         })
@@ -62,8 +61,36 @@ const AllUsers = () => {
     }
 
     // deleted user functionality
-    const handleDeleteUser = (user) => {
-        console.log(user);
+    const handleDeleteUser = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/allUsers/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+
+                            refetch()
+                        }
+                    })
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+
     }
 
     return (
@@ -95,7 +122,7 @@ const AllUsers = () => {
 
                                 <td>{user.role === 'musician' ? <span className='font-bold text-base bg-teal-500 p-2 text-yellow-200 rounded-lg'>Musician</span> : <button onClick={() => handleMakeMusician(user._id)} className='p-2 hover:bg-yellow-300 hover:rounded-full duration-500 w-fit'><FaUserGraduate className='w-6 h-6 '></FaUserGraduate></button>}</td>
 
-                                <td>{user.role === 'student' ? <span className='font-bold text-base bg-teal-500 p-2 text-yellow-200 rounded-lg'>Student</span> : <button className='p-2 hover:bg-yellow-300 hover:rounded-full duration-500 w-fit'><FaUser className='w-6 h-6 '></FaUser></button>}</td>
+                                <td>{user.role === 'student' ? <span className='font-bold text-base bg-teal-500 p-2 text-yellow-200 rounded-lg'>Student</span> : <button className='p-2 hover:bg-yellow-300 hover:rounded-full duration-500 w-fit'><FaUser className='w-6 h-6'></FaUser></button>}</td>
 
                                 <td><button onClick={() => handleDeleteUser(user._id)} className='p-2 hover:bg-yellow-300 hover:rounded-full duration-500 w-fit'><FaTrash className='w-6 h-6 '></FaTrash></button></td>
                             </tr>)

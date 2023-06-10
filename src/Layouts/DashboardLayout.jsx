@@ -4,20 +4,20 @@ import logo from '../assets/logo.png'
 import { FaUsersCog, FaUserShield, FaUser, FaUserGraduate, FaBook, FaBookReader, FaSwatchbook, FaBookMedical, FaBookOpen, FaHome, FaEnvelope, FaInfoCircle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
+import useMusician from '../Hooks/useMusician';
 
 const DashboardLayout = () => {
 
-    // const isAdmin = true;
-    const isInstructor = false;
-    // TODO Admin is not dynamic
-    const isAdmin = useAdmin()
+    const [,isAdmin] = useAdmin();
+    const [,isMusician] = useMusician();
+    console.log(isAdmin, isMusician);
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
 
                 <Outlet></Outlet>
-                
+
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
@@ -33,7 +33,7 @@ const DashboardLayout = () => {
 
                     {isAdmin && (
                         <div className='space-y-3'>
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300': 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserShield className='w-5 h-5'></FaUserShield> Admin Home</NavLink></li>
+                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserShield className='w-5 h-5'></FaUserShield> Admin Home</NavLink></li>
 
                             <li><NavLink to={'/dsfg'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBook className='w-5 h-5'></FaBook> Manage Classes</NavLink></li>
 
@@ -41,7 +41,7 @@ const DashboardLayout = () => {
                         </div>
                     )}
 
-                    {isInstructor && (
+                    {isMusician && (
                         <div className='space-y-3'>
                             <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserGraduate className='w-5 h-5'></FaUserGraduate>Musician Home</NavLink></li>
 
@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                         </div>
                     )}
 
-                    {!isAdmin && !isInstructor && (
+                    {!isAdmin && !isMusician && (
                         <div className='space-y-3'>
                             <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUser className='w-5 h-5'></FaUser> Student Home</NavLink></li>
 
