@@ -4,11 +4,20 @@ import { FaTrash, FaUser, FaUserGraduate, FaUserShield, FaUserSlash } from 'reac
 import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
 
+
 const AllUsers = () => {
-    const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
-        const res = await fetch('http://localhost:5000/allUsers')
+    
+    const { data: users = [], refetch } = useQuery(['allUsers'], async () => 
+    {
+        const token = localStorage.getItem('access-token');
+        const res = await fetch('http://localhost:5000/allUsers',{
+            headers:{
+                authorization: `bearer ${token}`
+            }
+        })
         return res.json();
     })
+    console.log(users);
 
     // Make Admin functionality
     const handleMakeAdmin = id => {

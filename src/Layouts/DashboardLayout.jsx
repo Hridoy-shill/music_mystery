@@ -3,15 +3,14 @@ import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { FaUsersCog, FaUserShield, FaUser, FaUserGraduate, FaBook, FaBookReader, FaSwatchbook, FaBookMedical, FaBookOpen, FaHome, FaEnvelope, FaInfoCircle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
+import useAdmin from '../Hooks/useAdmin';
 
 const DashboardLayout = () => {
 
-    const isAdmin = true;
+    // const isAdmin = true;
     const isInstructor = false;
     // TODO Admin is not dynamic
-    const {user} = useContext(AuthContext)
-    console.log(user);
-
+    const isAdmin = useAdmin()
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
