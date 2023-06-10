@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import { FaUsersCog, FaUserShield, FaUser, FaUserGraduate, FaBook, FaBookReader, FaSwatchbook, FaBookMedical, FaBookOpen, FaHome, FaEnvelope, FaInfoCircle } from 'react-icons/fa';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const DashboardLayout = () => {
 
     const isAdmin = true;
     const isInstructor = false;
     // TODO Admin is not dynamic
+    const {user} = useContext(AuthContext)
+    console.log(user);
 
     return (
         <div className="drawer lg:drawer-open">
@@ -41,7 +44,7 @@ const DashboardLayout = () => {
 
                     {isInstructor && (
                         <div className='space-y-3'>
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserGraduate className='w-5 h-5'></FaUserGraduate>Instructor Home</NavLink></li>
+                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserGraduate className='w-5 h-5'></FaUserGraduate>Musician Home</NavLink></li>
 
                             <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookMedical className='w-5 h-5'></FaBookMedical>Add a Class</NavLink></li>
 
