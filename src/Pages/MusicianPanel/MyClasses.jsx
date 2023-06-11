@@ -1,17 +1,24 @@
 import { multiFactor } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
 import { FaRegSun } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const MyClasses = () => {
+    const {user} = useContext(AuthContext)
+    console.log(user);
+    const {email} = user;
+    console.log(email);
+    
+
     const token = localStorage.getItem('access-token');
     const [myClasses, setMyClasses] = useState([]);
     console.log(myClasses);
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/musicianClasses', {
+        fetch(`http://localhost:5000/myClasses/${email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }
