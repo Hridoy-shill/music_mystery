@@ -38,7 +38,7 @@ const DashboardLayout = () => {
 
                             <li><NavLink to={'/dsfg'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBook className='w-5 h-5'></FaBook> Manage Classes</NavLink></li>
 
-                            <li><NavLink to={'/dashboard/allUsers'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUsersCog className='w-5 h-5'></FaUsersCog> Manage Users</NavLink></li>
+                            <li><NavLink to={'/dashboard/allUsers'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUsersCog className='w-5 h-5'></FaUsersCog>Manage Users</NavLink></li>
                         </div>
                     )}
 
