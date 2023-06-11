@@ -13,59 +13,65 @@ import MusicianHome from "../Pages/MusicianPanel/MusicianHome";
 import AddClass from "../Pages/MusicianPanel/AddClass";
 import MyClasses from "../Pages/MusicianPanel/MyClasses";
 import MusicianRoute from "./MusicianRoute";
+import UpdateClass from "../Pages/MusicianPanel/UpdateClass";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        errorElement:<ErrorPage></ErrorPage>,
-        children:[
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
             {
-                path:'/',
-                element:<HomePage></HomePage>
+                path: '/',
+                element: <HomePage></HomePage>
             },
             {
-                path:'/logIn',
-                element:<LoginPage></LoginPage>
+                path: '/logIn',
+                element: <LoginPage></LoginPage>
             },
             {
-                path:'/signUp',
+                path: '/signUp',
                 element: <SignUp></SignUp>
             }
         ]
     },
     {
-        path:'dashboard',
-        element:<DashboardLayout></DashboardLayout>,
-        children:[
+        path: 'dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
             {
-                path:'/dashboard/adminHome',
-                element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+                path: '/dashboard/adminHome',
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
             },
             {
-                path:'/dashboard/manageClass',
-                element:<AdminRoute><ManageClass></ManageClass></AdminRoute>
+                path: '/dashboard/manageClass',
+                element: <AdminRoute><ManageClass></ManageClass></AdminRoute>
             },
             {
-                path:'/dashboard/allUsers',
-                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+                path: '/dashboard/allUsers',
+                element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
 
             // musician routes
 
             {
-                path:'/dashboard/musicianHome',
-                element:<MusicianRoute><MusicianHome></MusicianHome></MusicianRoute>
+                path: '/dashboard/musicianHome',
+                element: <MusicianRoute><MusicianHome></MusicianHome></MusicianRoute>
             },
             {
-                path:'/dashboard/addClass',
-                element:<MusicianRoute><AddClass></AddClass></MusicianRoute>
+                path: '/dashboard/addClass',
+                element: <MusicianRoute><AddClass></AddClass></MusicianRoute>
             },
             {
-                path:'/dashboard/myClasses',
-                element:<MusicianRoute><MyClasses></MyClasses></MusicianRoute>
+                path: '/dashboard/myClasses',
+                element: <MusicianRoute><MyClasses></MyClasses></MusicianRoute>
+            },
+            {
+                path: '/dashboard/musicianClasses/:id',
+                element: <UpdateClass></UpdateClass>,
+                loader: ({ params }) => fetch(`http://localhost:5000/musicianClasses/${params.id}`)
             }
-            
+
         ]
     }
 ]);

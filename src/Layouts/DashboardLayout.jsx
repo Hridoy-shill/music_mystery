@@ -48,7 +48,7 @@ const DashboardLayout = () => {
 
                             <li><NavLink to={'/dashboard/addClass'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookMedical className='w-5 h-5'></FaBookMedical>Add a Class</NavLink></li>
 
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaSwatchbook className='w-5 h-5'></FaSwatchbook>My Classes</NavLink></li>
+                            <li><NavLink to={'/dashboard/myClasses'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaSwatchbook className='w-5 h-5'></FaSwatchbook>My Classes</NavLink></li>
                         </div>
                     )}
 

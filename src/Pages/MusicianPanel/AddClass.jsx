@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import Tittle from '../../Common_Component\'s/Tittle';
-import { json } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddClass = () => {
