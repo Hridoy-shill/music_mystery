@@ -15,6 +15,7 @@ const useMusician = () => {
             if(!user){
                 return []
             }
+            
             const res = await fetch(`http://localhost:5000/allUsers/musician/${user?.email}`, {
                 headers:{
                     authorization: `bearer ${token}`

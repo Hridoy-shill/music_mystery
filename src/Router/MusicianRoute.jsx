@@ -5,11 +5,11 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const MusicianRoute = ({children}) => {
    const {user, loading} = useContext(AuthContext);
-   const [isMusician, isMusicianLoading] = useMusician();
+   const [,isMusician, isMusicianLoading] = useMusician();
    const location = useLocation();
 
    if(loading || isMusicianLoading){
-    return <span className="loading loading-bars loading-lg"></span>
+    return <span className="loading loading-bars loading-lg text-teal-500"></span>
    }
 
    if(user && isMusician){
