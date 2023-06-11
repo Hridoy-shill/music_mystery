@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const useAdmin = () => {
+    
     const {user} = useContext(AuthContext)
   
     const token = localStorage.getItem('access-token');
