@@ -16,7 +16,7 @@ const AllUsers = () => {
         })
         return res.json();
     })
-    console.log(users);
+    // console.log(users);
 
     // Make Admin functionality
     const handleMakeAdmin = id => {
@@ -25,7 +25,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -46,7 +46,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -77,7 +77,7 @@ const AllUsers = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
 
                             refetch()

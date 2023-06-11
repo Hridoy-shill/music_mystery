@@ -10,7 +10,7 @@ const DashboardLayout = () => {
 
     const [,isAdmin] = useAdmin();
     const [,isMusician] = useMusician();
-    console.log(isAdmin, isMusician);
+    // console.log(isAdmin, isMusician);
     
     return (
         <div className="drawer lg:drawer-open">

@@ -7,7 +7,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 const useMusician = () => {
     const {user} = useContext(AuthContext)
     const token = localStorage.getItem('access-token');
-    console.log(token);
+    // console.log(token);
     const {refetch, data: isMusician, isLoading: isMusicianLoading } = useQuery({
         queryKey: ['isMusician', user?.email],
         queryFn: async () => {

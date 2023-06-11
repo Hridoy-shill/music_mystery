@@ -20,7 +20,7 @@ const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
         const { name, email, password, confirmPassword, photo } = data;
 
         if (password === confirmPassword) {

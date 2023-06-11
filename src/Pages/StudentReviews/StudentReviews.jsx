@@ -19,7 +19,7 @@ const StudentReviews = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-    console.log(reviews);
+    // console.log(reviews);
 
     return (
         <div className='mb-10'>

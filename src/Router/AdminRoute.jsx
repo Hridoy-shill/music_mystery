@@ -5,7 +5,9 @@ import { Navigate, useLocation } from 'react-router-dom';
 
 const AdminRoute = ({children}) => {
    const {user, loading} = useContext(AuthContext);
-   const [isAdmin, isAdminLoading] = useAdmin();
+   const [refetch ,isAdmin, isAdminLoading] = useAdmin();
+   // console.log(isAdmin, user, isAdminLoading );
+   // console.log(isAdminLoading, loading);
    const location = useLocation();
 
    if(loading || isAdminLoading){
