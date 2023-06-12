@@ -47,9 +47,12 @@ const Navbar = () => {
 
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-teal-500 w-52">
                         <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
-                        <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
-                        <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
-                        <li><NavLink to={'/sadf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>
+
+                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
+
+                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
+
+                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>
                     </ul>
                 </div>
 
@@ -62,8 +65,11 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal">
                     <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
-                    <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
+                    
+                    <li><NavLink to={'/instructors'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Musician's</NavLink></li>
+
                     <li><NavLink to={'/asdf'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
+
                     {user && <li><NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
                 </ul>
             </div>

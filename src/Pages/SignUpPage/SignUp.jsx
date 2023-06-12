@@ -32,7 +32,7 @@ const SignUp = () => {
                         displayName: name,
                         photoURL: photo,
                     })
-                    const savedUser = { name: name, email: email }
+                    const savedUser = { name: name, email: email, photoURL: photo}
 
                     fetch('http://localhost:5000/users', {
                         method: 'POST',

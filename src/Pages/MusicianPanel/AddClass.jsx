@@ -92,7 +92,7 @@ const AddClass = () => {
                     </div>
 
                     <div>
-                        <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base' type="submit" name="Submit" id="" value={'Add class'} />
+                        <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base mt-5' type="submit" name="Submit" id="" value={'Add class'} />
                     </div>
 
                 </form>
