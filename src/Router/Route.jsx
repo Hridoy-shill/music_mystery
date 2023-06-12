@@ -15,6 +15,7 @@ import MyClasses from "../Pages/MusicianPanel/MyClasses";
 import MusicianRoute from "./MusicianRoute";
 import UpdateClass from "../Pages/MusicianPanel/UpdateClass";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
+import AllClasses from "../Pages/AllClasses/AllClasses";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
                 element: <AllInstructors></AllInstructors>,
                
             },
+            {
+                path:'/allClasses',
+                element:<AllClasses></AllClasses>
+            }
         ]
     },
     {
