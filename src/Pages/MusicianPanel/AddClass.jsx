@@ -11,13 +11,13 @@ const AddClass = () => {
 
     const onSubmit = data => {
 
-        const { className, email, musicianName, seats, photo, price, status } = data;
-        console.log({ className, email, musicianName, seats, photo, price, status });
+        const { className, email, musicianName, seats, photo, price, status, feedback } = data;
+        console.log({ className, email, musicianName, seats, photo, price, status, feedback });
         const Seats = parseFloat(seats);
         const Price = parseFloat(price);
         console.log(Seats, Price);
 
-        const newClass = { className, email, musicianName, Seats, Price, photo, status };
+        const newClass = { className, email, musicianName, Seats, Price, photo, status, feedback };
         const token = localStorage.getItem('access-token');
 
         fetch('http://localhost:5000/addClasses', {
@@ -91,8 +91,13 @@ const AddClass = () => {
                         <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" {...register("status", { required: true })} name="status" id="" placeholder='Class price' required  value={'pending'}/>
                     </div>
 
+                    <div className='w-full hidden'>
+                        <label htmlFor="status"><span className='font-bold text-lg'>Feedback:</span></label>
+                        <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" {...register("feedback", { required: true })} name="feedback" id="" placeholder='feedback' required  value={'a'}/>
+                    </div>
+
                     <div>
-                        <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base mt-5' type="submit" name="Submit" id="" value={'Add class'} />
+                        <input className='btn btn-outline hover:bg-transparent hover:text-black hover:border-teal-500 hover:border-2 border-teal-500 border-2 hover:bg-teal-500 duration-300 w-full font-bold text-base mt-5' type="submit" name="Submit" id="" value={'Add class'}/>
                     </div>
 
                 </form>

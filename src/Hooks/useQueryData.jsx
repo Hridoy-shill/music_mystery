@@ -5,9 +5,9 @@ import { AuthContext } from '../Provider/AuthProvider';
 const useQueryData = () => {
 
     const { refetch, data} = useQuery({
-        queryKey: ['todos'],
+        queryKey: ['todo'],
         queryFn: async () => {
-            const response = await fetch('/todos/' + todoId)
+            const response = await fetch('/todo/' + todoId)
             return response.json()
         },
     })
