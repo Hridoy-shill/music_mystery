@@ -60,7 +60,7 @@ const ManageClass = () => {
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleClass.musicianName}</td>
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleClass.email}</td>
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleClass.Seats}</td>
-                                    <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>${singleClass.Price}</td>
+                                    <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>${singleClass.Price}</td> 
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center space-y-2'>
                                         <button className='btn btn-sm hover:bg-green-500 font-bold w-[100px] hover:border-black'>approved</button>
                                         <button className='btn btn-sm hover:bg-red-500 font-bold w-[100px] hover:border-black'>denied</button>
