@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
 import { reload } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 const ManageClass = () => {
 
@@ -42,6 +43,7 @@ const ManageClass = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
+                    window.location.reload();
                 }
             })
     }
@@ -60,13 +62,10 @@ const ManageClass = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
+                    window.location.reload();
                 }
             })
     }
-
-    const handleFeedback = (id) => {
-        console.log(id);
-    };
 
     return (
         <>
@@ -107,10 +106,16 @@ const ManageClass = () => {
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.Seats}</td>
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>${singleclass.Price}</td>
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.status}</td>
+
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center space-y-2'>
                                         <button onClick={() => handleApproved(singleclass._id)} className='btn btn-sm hover:bg-green-500 font-bold w-[100px] hover:border-black' disabled={singleclass.status == 'approved' && true}>approved</button>
                                         <button onClick={() => handleDenied(singleclass._id)} className='btn btn-sm hover:bg-red-500 font-bold w-[100px] hover:border-black' disabled={singleclass.status == 'denied' && true}>denied</button>
-                                        <button onClick={() => handleFeedback(singleclass._id)} className='btn btn-sm hover:bg-slate-500 hover:text-white font-bold w-[100px] hover:border-black'>Feedback</button>
+                                        
+                                        { singleclass.status === 'denied' ? 
+                                            <Link to={`/dashboard/feedback/${singleclass._id}`} className='btn btn-sm hover:bg-slate-500 hover:text-white font-bold w-[100px] hover:border-black'>Feedback</Link>
+                                            :
+                                            <></>
+                                        }
                                     </td>
                                 </tr>)
                             }

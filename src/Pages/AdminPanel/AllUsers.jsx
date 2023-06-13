@@ -106,7 +106,6 @@ const AllUsers = () => {
                             <th className='text-lg font-bold text-black'>email</th>
                             <th className='text-lg font-bold text-black'>Admin</th>
                             <th className='text-lg font-bold text-black'>Musician </th>
-                          
                             <th className='text-lg font-bold text-black'>Delete</th>
                         </tr>
                     </thead>
@@ -118,6 +117,8 @@ const AllUsers = () => {
                                 <td className='font-semibold text-base text-black'>{user.email}</td>
 
                                 <td>{user.role === 'admin' ? <button className='font-bold text-base bg-teal-500 p-2 text-yellow-200 rounded-lg disabled opacity-30'>Admin</button> : <button onClick={() => handleMakeAdmin(user._id)} className='p-2 hover:bg-yellow-300 hover:rounded-full duration-500 w-fit'><FaUserShield className='w-6 h-6 '></FaUserShield></button>}</td>
+
+                                
 
 
                                 <td>{user.role === 'musician' ? <button className='font-bold text-base bg-teal-500 p-2 text-yellow-200 rounded-lg disabled opacity-30'>Musician</button> : <button onClick={() => handleMakeMusician(user._id)} className='p-2 hover:bg-yellow-300 hover:rounded-full duration-500 w-fit'><FaUserGraduate className='w-6 h-6 '></FaUserGraduate></button>}</td>

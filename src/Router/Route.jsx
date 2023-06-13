@@ -16,6 +16,7 @@ import MusicianRoute from "./MusicianRoute";
 import UpdateClass from "../Pages/MusicianPanel/UpdateClass";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import FeedBack from "./FeedBack";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allUsers',
                 element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+            },
+            {
+                path:`/dashboard/feedback/:id`,
+                element:<FeedBack></FeedBack>,
+                loader:({params}) => fetch(`http://localhost:5000/feedback/${params.id}`)
             },
 
             // musician routes
