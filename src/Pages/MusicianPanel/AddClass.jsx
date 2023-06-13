@@ -11,13 +11,14 @@ const AddClass = () => {
 
     const onSubmit = data => {
 
-        const { className, email, musicianName, seats, photo, price, status, feedback } = data;
-        console.log({ className, email, musicianName, seats, photo, price, status, feedback });
+        const { className, email, musicianName, seats, photo, price, status, feedback, totalEnrolled } = data;
+        console.log({ className, email, musicianName, seats, photo, price, status, feedback, totalEnrolled });
         const Seats = parseFloat(seats);
         const Price = parseFloat(price);
+        const Students = parseFloat(totalEnrolled);
         console.log(Seats, Price);
 
-        const newClass = { className, email, musicianName, Seats, Price, photo, status, feedback };
+        const newClass = { className, email, musicianName, Seats, Price, photo, status, feedback, Students};
         const token = localStorage.getItem('access-token');
 
         fetch('http://localhost:5000/addClasses', {
@@ -94,6 +95,11 @@ const AddClass = () => {
                     <div className='w-full hidden'>
                         <label htmlFor="status"><span className='font-bold text-lg'>Feedback:</span></label>
                         <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="text" {...register("feedback", { required: true })} name="feedback" id="" placeholder='feedback' required  value={'a'}/>
+                    </div>
+
+                    <div className='w-full hidden'>
+                        <label htmlFor="totalEnrolled"><span className='font-bold text-lg'>totalEnrolled:</span></label>
+                        <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded' type="number" {...register("totalEnrolled", { required: true })} name="totalEnrolled" id="" placeholder='totalEnrolled' required  value={0}/>
                     </div>
 
                     <div>

@@ -60,10 +60,10 @@ const MyClasses = () => {
                             </td>
                             <td className='border-2 border-black'>{myClass.className}</td>
                             <td className='border-2 border-black'>{myClass.Seats}</td>
-                            <td className='border-2 border-black'>DekateHobe</td>
+                            <td className='border-2 border-black'>{myClass.Students}</td>
                             <td className='border-2 border-black'>{myClass.Price} $</td>
                             <td className='border-2 border-black'>{myClass.status}</td>
-                            <td className='border-2 border-black'>{myClass.feedback}</td>
+                            <td className='border-2 border-black'>{myClass.feedback ? <>{myClass.feedback}</> : <>x</>}</td>
                             <td className='border-2 border-black'><Link to={`/dashboard/musicianClasses/${myClass._id}`}><button><FaRegSun className='mx-auto my-auto w-8 h-8'></FaRegSun></button></Link></td>
                         </tr>)}
 
