@@ -17,6 +17,8 @@ import UpdateClass from "../Pages/MusicianPanel/UpdateClass";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import FeedBack from "./FeedBack";
+import MySelectedClasses from "../Pages/StudentPanel/MySelectedClasses";
+import MyEnrolledClasses from "../Pages/StudentPanel/MyEnrolledClasses";
 
 const router = createBrowserRouter([
     {
@@ -87,6 +89,16 @@ const router = createBrowserRouter([
                 path: '/dashboard/musicianClasses/:id',
                 element: <UpdateClass></UpdateClass>,
                 loader: ({ params }) => fetch(`http://localhost:5000/musicianClasses/${params.id}`)
+            },
+
+            // student routes
+            {
+                path:'/dashboard/mySelectedClasses',
+                element:<MySelectedClasses></MySelectedClasses>
+            },
+            {
+                path:'/dashboard/myEnrolledClasses',
+                element:<MyEnrolledClasses></MyEnrolledClasses>
             }
 
         ]

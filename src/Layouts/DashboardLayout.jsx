@@ -56,18 +56,22 @@ const DashboardLayout = () => {
                         <div className='space-y-3'>
                             <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUser className='w-5 h-5'></FaUser> Student Home</NavLink></li>
 
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookOpen className='w-5 h-5'></FaBookOpen> My Selected Classes</NavLink></li>
+                            <li><NavLink to={'/dashboard/mySelectedClasses'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookOpen className='w-5 h-5'></FaBookOpen> My Selected Classes</NavLink></li>
 
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>My Enrolled Classes</NavLink></li>
+                            <li><NavLink to={'/dashboard/myEnrolledClasses'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>My Enrolled Classes</NavLink></li>
                         </div>
                     )}
 
                     <div className="divider text-base font-bold">OR</div>
 
                     <div className='space-y-3'>
+
                         <li><NavLink to={'/'} className='mt-2 border-s-4 border-yellow-300 bg-transparent p-2 font-bold text-base hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 hover:rounded-md me-5'><FaHome className='w-5 h-5'></FaHome> Home</NavLink></li>
+
                         <li><NavLink to={'/'} className='mt-2 border-s-4 border-yellow-300 bg-transparent p-2 font-bold text-base hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 hover:rounded-md me-5'><FaEnvelope className='w-5 h-5'></FaEnvelope>Contact Us</NavLink></li>
+
                         <li><NavLink to={'/'} className='mt-2 border-s-4 border-yellow-300 bg-transparent p-2 font-bold text-base hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 hover:rounded-md me-5'><FaInfoCircle className='w-5 h-5'></FaInfoCircle>About</NavLink></li>
+                        
                     </div>
                 </ul>
             </div>
