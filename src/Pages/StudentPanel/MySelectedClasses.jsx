@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
-import { FaRegTrashAlt, FaWallet } from 'react-icons/fa';
+import useSelectedClassData from '../../Hooks/useSelectedClassData';
+import { Link } from 'react-router-dom';
+import { FaRegTrashAlt, FaWallet } from "react-icons/fa";
 import Swal from 'sweetalert2';
+
 
 
 const MySelectedClasses = () => {
@@ -9,17 +12,15 @@ const MySelectedClasses = () => {
     const [myClasses, setMyClasses] = useState([])
     console.log(myClasses);
 
+    const [selectedClasses, isLoading, refetch] = useSelectedClassData();
+    
+    useEffect(()=>{
+        setMyClasses(selectedClasses)
+    },[selectedClasses])
 
-    useEffect(() => {
-        fetch('http://localhost:5000/selectedAllClasses')
-            .then(res => res.json())
-            .then(data => setMyClasses(data))
-    }, [])
-
-    const handlePayment = (id) => {
-        console.log(id);
+    const handlePayment = (myClass) => {
+        console.log(myClass);
     }
-
 
     const handleDelete = (id) => {
         console.log(id);
@@ -35,7 +36,9 @@ const MySelectedClasses = () => {
                         'Your file has been deleted.',
                         'success'
                     )
+                    refetch()
                 }
+
             })
     }
 
@@ -74,7 +77,7 @@ const MySelectedClasses = () => {
                                 <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>${myClass.Price}</td>
                                 <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{myClass.Seats}</td>
 
-                                <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'><button onClick={() => handlePayment(myClass._id)}><FaWallet className='mx-auto my-auto w-8 h-8'></FaWallet></button></td>
+                                <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'><Link to={`/dashboard/payment/${myClass._id}`}><button onClick={() => handlePayment(myClass)}><FaWallet className='mx-auto my-auto w-8 h-8'></FaWallet></button></Link></td>
 
                                 <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'><button onClick={() => handleDelete(myClass._id)}><FaRegTrashAlt className='mx-auto my-auto w-8 h-8'></FaRegTrashAlt></button></td>
 

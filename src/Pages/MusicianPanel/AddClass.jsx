@@ -6,19 +6,20 @@ import Swal from 'sweetalert2';
 
 const AddClass = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
+    
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = data => {
 
-        const { className, email, musicianName, seats, photo, price, status, feedback, totalEnrolled } = data;
-        console.log({ className, email, musicianName, seats, photo, price, status, feedback, totalEnrolled });
+        const { className, instructorEmail, musicianName, seats, photo, price, status, feedback, totalEnrolled } = data;
+        console.log({ className, instructorEmail, musicianName, seats, photo, price, status, feedback, totalEnrolled });
         const Seats = parseFloat(seats);
         const Price = parseFloat(price);
         const Students = parseFloat(totalEnrolled);
         console.log(Seats, Price);
 
-        const newClass = { className, email, musicianName, Seats, Price, photo, status, feedback, Students};
+        const newClass = { className, instructorEmail, musicianName, Seats, Price, photo, status, feedback, Students};
         const token = localStorage.getItem('access-token');
 
         fetch('http://localhost:5000/addClasses', {
@@ -71,7 +72,7 @@ const AddClass = () => {
 
                         <div className='flex flex-col w-full'>
                             <label htmlFor="email"><span className='font-bold text-lg'>Instructor email:</span></label>
-                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded text-slate-400' type="email" {...register("email", { required: true })} name="email" id="" placeholder='Musician Email' value={user.email} readOnly />
+                            <input className='border-2 border-teal-500 p-2 bg-slate-100 rounded text-slate-400' type="email" {...register("instructorEmail", { required: true })} name="email" id="" placeholder='Musician Email' value={user.email} readOnly />
                         </div>
                     </div>
 

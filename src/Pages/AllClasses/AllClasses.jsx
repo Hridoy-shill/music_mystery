@@ -1,16 +1,29 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useAdmin from '../../Hooks/useAdmin';
 import useMusician from '../../Hooks/useMusician';
 import Swal from 'sweetalert2';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import useSelectedClassData from '../../Hooks/useSelectedClassData';
+
 const AllClasses = () => {
+
+    const { user } = useContext(AuthContext)
+    console.log(user);
+
 
     const [classes, setClasses] = useState([])
     console.log(classes);
     const [, isAdmin] = useAdmin();
     const [, isMusician] = useMusician();
+    const [, , refetch] = useSelectedClassData()
     console.log(isAdmin, isMusician);
+
+
+    const navigate = useNavigate();
+    const location = useLocation()
 
     useEffect(() => {
         const token = localStorage.getItem('access-token');
@@ -30,27 +43,40 @@ const AllClasses = () => {
     }, [])
 
     const handleSelect = selectedClass => {
+        const { _id, Price, Seats, className, photo, musicianName } = selectedClass;
         console.log(selectedClass);
-        const { Price, Seats, Students, className, photo, email, musicianName } = selectedClass;
-        console.log({ Price, Seats, Students, className, photo, email, musicianName });
-        const classData = { Price, Seats, Students, className, photo, email, musicianName };
-
-        fetch('http://localhost:5000/selectedClasses', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(classData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Selected successfully',
-                    })
-                };
+        if (user && user.email) {
+            const selectedClassData = { classId: _id, userEmail: user.email, Price, Seats, className, photo, musicianName }
+            fetch('http://localhost:5000/selectedClasses', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClassData)
             })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId) {
+                        refetch()
+                        Swal.fire({
+                            icon: 'success',
+                            text: 'Selected successfully',
+                        })
+                    };
+                })
+        }
+
+        else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Log in for select Courses',
+            })
+            navigate('/logIn', { state: { from: location } });
+        }
+
+
+
     }
 
     return (
@@ -66,7 +92,7 @@ const AllClasses = () => {
                         <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Enrolled Students:</span> {singleClass.Students}</p>
                         <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Course fee:</span>${singleClass.Price}</p>
                         <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Musician Name:</span> {singleClass.musicianName}</p>
-                        <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Email:</span> {singleClass.email}</p>
+                        <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Email:</span> {singleClass.instructorEmail}</p>
                         <button onClick={() => handleSelect(singleClass)} className={`${singleClass.Seats === 0 || isAdmin === true || isMusician === true ? 'btn-disabled' : ''} btn w-full bg-teal-500 hover:bg-teal-500 text-base font-bold mt-10`}>Select Course</button>
                     </div>
                 </div>)
