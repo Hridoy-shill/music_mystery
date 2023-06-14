@@ -6,16 +6,21 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import axios from 'axios';
 
 
-const CheckoutForm = ({ Price }) => {
+const CheckoutForm = ({ Price , allData}) => {
+    const{Seats, className, photo, musicianName, userEmail} = allData;
+    // console.log(Seats, className, photo, musicianName, userEmail);
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState('')
     const { user } = useContext(AuthContext)
 
     const [clientSecret, setClientSecret] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
+    
     console.log(Price);
     useEffect(() => {
-        // const token = localStorage.getItem('access-token');
+       
         if (Price > 0) {
             console.log('19 noline', Price);
             axios.post('http://localhost:5000/create-payment-intent', {Price})
@@ -59,6 +64,7 @@ const CheckoutForm = ({ Price }) => {
                 timer: 1500
             })
             console.log('PaymentMethod', paymentMethod);
+            setProcessing(true)
         }
 
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
@@ -78,6 +84,21 @@ const CheckoutForm = ({ Price }) => {
             console.log(confirmError);
         }
         console.log(paymentIntent);
+        setProcessing(false)
+
+        if(paymentIntent.status === 'succeeded'){
+            const transactionId = paymentIntent.id;
+            setTransactionId(transactionId)
+
+            const payment = {user: user?.email, transactionId:paymentIntent.id, Price, Seats:Seats, courseName:className, courseImg:photo, teacherName:musicianName, studentEmail:userEmail}
+            console.log(payment);
+
+            axios.post('http://localhost:5000/allPayments', {payment})
+            .then(res => {
+                console.log(res.data);
+            })
+            
+        }
 
     };
 
@@ -100,11 +121,12 @@ const CheckoutForm = ({ Price }) => {
                         },
                     }}
                 />
-                <button className='btn btn-sm btn-outline hover:border-teal-500 border-teal-500 hover:bg-teal-500 mt-5' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-sm btn-outline hover:border-teal-500 border-teal-500 hover:bg-teal-500 mt-5' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
-            {error && <p className='text-red-500'>{error}</p>}
+            {transactionId && <p className='text-green-500 font-semibold mt-2'>Payment successfully TransactionID:{transactionId}</p>}
+            {error && <p className='text-red-500 font-semibold mt-2'>{error}</p>}
         </div>
     );
 };

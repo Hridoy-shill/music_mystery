@@ -6,7 +6,7 @@ import './Banner.css'
 const Banner = () => {
     return (
         <Carousel className='max-w-screen-xl h-5/6'>
-            <div>
+            <div data-aos="fade-right">
                 <img className='relative z-10' src="https://i.ibb.co/hWK3Lfg/8-Easy-Guitar-Songs-For-Every-Beginner-2.png" />
                 <div className='absolute top-0 bg-gradient-to-r from-teal-300  z-20 w-full h-full opacity-60'></div>
                 <div className='absolute text-2xl font-bold text-white z-40 top-56 left-20 w-2/4'>
@@ -20,6 +20,7 @@ const Banner = () => {
                     </div>
                 </div>
             </div>
+            
             <div>
                 <img className='relative z-10' src="https://i.ibb.co/KqHQFNQ/8-Easy-Guitar-Songs-For-Every-Beginner-3.png" />
                 <div className='absolute top-0 bg-gradient-to-r from-teal-300  z-20 w-full h-full opacity-60'></div>

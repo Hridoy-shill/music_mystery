@@ -10,8 +10,10 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Pk);
 
 const Payment = () => {
     const [classData, setClassData] = useState({});
-    const { Price } = classData;
-    console.log(Price);
+    
+    const { Price, Seats, className, photo, musicianName, userEmail } = classData;
+    const allData ={Seats, className, photo, musicianName, userEmail}
+    console.log(Price, allData);
 
     const { id } = useParams();
     console.log(id);
@@ -20,7 +22,7 @@ const Payment = () => {
         fetch(`http://localhost:5000/singleClassData/${id}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 setClassData(data)
             })
     }, [id])
@@ -35,7 +37,7 @@ const Payment = () => {
                 <p className='font-bold text-xl text-center border-2 border-teal-500 hover:bg-teal-500 duration-500 hover:border-teal-500 p-2 mt-5 rounded-lg'>Payment Amount: ${Price}</p>
                 <Elements stripe={stripePromise}>
                     <div className='mt-5'>
-                        <CheckoutForm Price={Price}></CheckoutForm>
+                        <CheckoutForm Price={Price} allData={allData}></CheckoutForm>
                     </div>
                 </Elements>
             </div>
