@@ -8,7 +8,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const MyClasses = () => {
     const {user} = useContext(AuthContext)
     console.log(user);
-    const {email} = user;
+    const {email} = user || {};
     console.log(email);
     
 
@@ -25,9 +25,11 @@ const MyClasses = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setMyClasses(data);
             })
-    }, [])
+    }, [user])
+
     return (
         <>
             <div className='mb-10'>

@@ -4,6 +4,7 @@ import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
 import { reload } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
 const ManageClass = () => {
 
@@ -12,6 +13,27 @@ const ManageClass = () => {
 
 
     useEffect(() => {
+
+        // const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
+        //     const token = localStorage.getItem('access-token');
+        //     const res = await fetch('http://localhost:5000/allUsers', {
+        //         headers: {
+        //             authorization: `bearer ${token}`
+        //         }
+        //     })
+        //     return res.json();
+        // })
+
+        // const { data: classes = [], refetch } = useQuery([musicianClasses], async () => {
+        //     const token = localStorage.getItem('access-token');
+        //     const res = await fetch('http://localhost:5000/allClasses', {
+        //         headers: {
+        //             authorization: `bearer ${token}`
+        //         }
+        //     })
+        //     console.log(classes);
+        // })
+
         const token = localStorage.getItem('access-token');
         axios.get('http://localhost:5000/allClasses', {
             headers: {
@@ -110,8 +132,8 @@ const ManageClass = () => {
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center space-y-2'>
                                         <button onClick={() => handleApproved(singleclass._id)} className='btn btn-sm hover:bg-green-500 font-bold w-[100px] hover:border-black' disabled={singleclass.status == 'approved' && true}>approved</button>
                                         <button onClick={() => handleDenied(singleclass._id)} className='btn btn-sm hover:bg-red-500 font-bold w-[100px] hover:border-black' disabled={singleclass.status == 'denied' && true}>denied</button>
-                                        
-                                        { singleclass.status === 'denied' ? 
+
+                                        {singleclass.status === 'denied' ?
                                             <Link to={`/dashboard/feedback/${singleclass._id}`} className='btn btn-sm hover:bg-slate-500 hover:text-white font-bold w-[100px] hover:border-black'>Feedback</Link>
                                             :
                                             <></>
