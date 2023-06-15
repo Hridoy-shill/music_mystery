@@ -4,36 +4,15 @@ import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
 import { reload } from 'firebase/auth';
 import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
 
 const ManageClass = () => {
 
     const [classes, setClasses] = useState([])
+    // const [reload, setReload] = useState()
     console.log(classes);
 
 
     useEffect(() => {
-
-        // const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
-        //     const token = localStorage.getItem('access-token');
-        //     const res = await fetch('http://localhost:5000/allUsers', {
-        //         headers: {
-        //             authorization: `bearer ${token}`
-        //         }
-        //     })
-        //     return res.json();
-        // })
-
-        // const { data: classes = [], refetch } = useQuery([musicianClasses], async () => {
-        //     const token = localStorage.getItem('access-token');
-        //     const res = await fetch('http://localhost:5000/allClasses', {
-        //         headers: {
-        //             authorization: `bearer ${token}`
-        //         }
-        //     })
-        //     console.log(classes);
-        // })
-
         const token = localStorage.getItem('access-token');
         axios.get('http://localhost:5000/allClasses', {
             headers: {
@@ -65,7 +44,10 @@ const ManageClass = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    window.location.reload();
+                    const newClasses = [...classes]
+                    const index = newClasses.findIndex((text)=>text._id == id)
+                    newClasses[index] = {...newClasses[index], status:'approved'}
+                    setClasses(newClasses)
                 }
             })
     }
@@ -84,7 +66,10 @@ const ManageClass = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    window.location.reload();
+                    const newClasses = [...classes]
+                    const index = newClasses.findIndex((text)=>text._id == id)
+                    newClasses[index] = {...newClasses[index], status:'denied'}
+                    setClasses(newClasses)
                 }
             })
     }
@@ -122,11 +107,17 @@ const ManageClass = () => {
                                             </div>
                                         </div>
                                     </td>
+
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.className}</td>
+
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.musicianName}</td>
-                                    <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.email}</td>
+
+                                    <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.instructorEmail}</td>
+
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.Seats}</td>
+
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>${singleclass.Price}</td>
+
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center'>{singleclass.status}</td>
 
                                     <td className='font-bold text-black text-base border-2 border-black hover:bg-teal-500 duration-700 text-center space-y-2'>
