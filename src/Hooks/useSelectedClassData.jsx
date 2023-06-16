@@ -10,7 +10,7 @@ const useSelectedClassData = () => {
     const { isLoading, data: selectedClasses = [], refetch,} = useQuery({
         queryKey: ['selectedClasses', user?.email],
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/selectedAllClasses?email=${user?.email}`)
+            const response = await fetch(`https://the-music-mystrey-server.vercel.app/selectedAllClasses?email=${user?.email}`)
 
             return response.json();
         },

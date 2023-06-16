@@ -18,7 +18,7 @@ const MyClasses = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myClasses/${email}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/myClasses/${email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }

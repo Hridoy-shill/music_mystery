@@ -17,7 +17,7 @@ const FeedBack = () => {
         const adminFeedback = { feedback: feedback }
         console.log(adminFeedback ,id);
 
-        fetch(`http://localhost:5000/admin/feedback/${id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/admin/feedback/${id}`, {
 
             method: "PUT",
             headers: {

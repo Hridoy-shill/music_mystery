@@ -24,7 +24,7 @@ const MySelectedClasses = () => {
 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`http://localhost:5000/selectedClass/${id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/selectedClass/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

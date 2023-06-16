@@ -10,7 +10,7 @@ const AllInstructors = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('access-token');
-        axios.get('http://localhost:5000/musicians', {
+        axios.get('https://the-music-mystrey-server.vercel.app/musicians', {
             headers: {
                 authorization: `bearer ${token}`
             }

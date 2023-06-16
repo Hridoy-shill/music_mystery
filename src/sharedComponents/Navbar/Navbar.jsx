@@ -54,6 +54,7 @@ const Navbar = () => {
 
                     {user && <li><NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
                     </ul>
+                    
                 </div>
                 <Link to={'/'} className='flex items-center'>
                     <img className='w-16 h-14' src={logo} />

@@ -51,9 +51,14 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <DashboardLayout></DashboardLayout>,
         children: [
+            {
+                path:'',
+                element:<p className='text-5xl text-center font-bold border-2 p-2 border-teal-500 hover:bg-teal-500 hover:bg-opacity-50 rounded animate-bounce'>Well come to Dashboard</p>
+            },
+
             {
                 path: '/dashboard/manageClass',
                 element: <AdminRoute><ManageClass></ManageClass></AdminRoute>
@@ -65,7 +70,7 @@ const router = createBrowserRouter([
             {
                 path:`/dashboard/feedback/:id`,
                 element:<FeedBack></FeedBack>,
-                loader:({params}) => fetch(`http://localhost:5000/feedback/${params.id}`)
+                loader:({params}) => fetch(`https://the-music-mystrey-server.vercel.app/feedback/${params.id}`)
             },
 
             // musician routes
@@ -82,7 +87,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/musicianClasses/:id',
                 element: <UpdateClass></UpdateClass>,
-                loader: ({ params }) => fetch(`http://localhost:5000/musicianClasses/${params.id}`)
+                loader: ({ params }) => fetch(`https://the-music-mystrey-server.vercel.app/musicianClasses/${params.id}`)
             },
 
             // student routes

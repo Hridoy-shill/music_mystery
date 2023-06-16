@@ -11,7 +11,7 @@ const MyEnrolledClasses = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myEnrolledClasses/${email}`)
+        fetch(`https://the-music-mystrey-server.vercel.app/myEnrolledClasses/${email}`)
             .then(res => res.json())
             .then(data => setMyClasses(data))
     }, [user])

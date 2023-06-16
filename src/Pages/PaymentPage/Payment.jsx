@@ -21,7 +21,7 @@ const Payment = () => {
     // console.log(id);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleClassData/${id}`)
+        fetch(`https://the-music-mystrey-server.vercel.app/singleClassData/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

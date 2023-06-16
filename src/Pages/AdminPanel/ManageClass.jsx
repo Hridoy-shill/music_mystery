@@ -14,7 +14,7 @@ const ManageClass = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('access-token');
-        axios.get('http://localhost:5000/allClasses', {
+        axios.get('https://the-music-mystrey-server.vercel.app/allClasses', {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -30,7 +30,7 @@ const ManageClass = () => {
     }, [])
 
     const handleApproved = (id) => {
-        fetch(`http://localhost:5000/allClasses/Approved/${id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/allClasses/Approved/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -52,7 +52,7 @@ const ManageClass = () => {
             })
     }
     const handleDenied = (id) => {
-        fetch(`http://localhost:5000/allClasses/Denied/${id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/allClasses/Denied/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -14,7 +14,7 @@ const useAdmin = () => {
             if(!user){
                 return []
             }
-            const res = await fetch(`http://localhost:5000/allUsers/admin/${user?.email}`, {
+            const res = await fetch(`https://the-music-mystrey-server.vercel.app/allUsers/admin/${user?.email}`, {
                 headers:{
                     authorization: `bearer ${token}`
                 }

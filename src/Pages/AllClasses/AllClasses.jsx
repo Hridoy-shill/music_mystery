@@ -28,7 +28,7 @@ const AllClasses = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('access-token');
-        axios.get('http://localhost:5000/allClasses', {
+        axios.get('https://the-music-mystrey-server.vercel.app/allClasses', {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -48,7 +48,7 @@ const AllClasses = () => {
         console.log(selectedClass);
         if (user && user.email) {
             const selectedClassData = { classId: _id, userEmail: user.email, Price, Seats, className, photo, musicianName }
-            fetch('http://localhost:5000/selectedClasses', {
+            fetch('https://the-music-mystrey-server.vercel.app/selectedClasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

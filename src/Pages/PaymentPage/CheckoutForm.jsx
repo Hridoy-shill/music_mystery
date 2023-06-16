@@ -24,7 +24,7 @@ const CheckoutForm = ({ Price , allData}) => {
        
         if (Price > 0) {
             console.log('19 noline', Price);
-            axios.post('http://localhost:5000/create-payment-intent', {Price})
+            axios.post('https://the-music-mystrey-server.vercel.app/create-payment-intent', {Price})
             .then(res => {
                 console.log(res.data);
                 setClientSecret(res.data.clientSecret)
@@ -94,7 +94,7 @@ const CheckoutForm = ({ Price , allData}) => {
             const payment = {user: user?.email, transactionId:paymentIntent.id, Price, Seats:Seats, courseName:className, courseImg:photo, teacherName:musicianName, studentEmail:userEmail, classID: classId, Date: new Date()}
             console.log(payment);
 
-            axios.post('http://localhost:5000/allPayments', {payment})
+            axios.post('https://the-music-mystrey-server.vercel.app/allPayments', {payment})
             .then(res => {
                 console.log(res.data);
             })

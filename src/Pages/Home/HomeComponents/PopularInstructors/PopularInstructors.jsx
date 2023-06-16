@@ -4,7 +4,7 @@ import Tittle from '../../../../Common_Component\'s/Tittle';
 const PopularInstructors = () => {
     const [popularMusicians, setPopularMusicians] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/popularMusicians')
+        fetch('https://the-music-mystrey-server.vercel.app/popularMusicians')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

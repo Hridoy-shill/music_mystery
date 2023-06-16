@@ -20,7 +20,7 @@ const UpdateClass = () => {
         console.log(updateClass);
 
 
-        fetch(`http://localhost:5000/updateClass/${_id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/updateClass/${_id}`, {
 
             method: "PUT",
             headers: {

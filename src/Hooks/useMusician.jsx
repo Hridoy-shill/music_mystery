@@ -16,7 +16,7 @@ const useMusician = () => {
                 return []
             }
             
-            const res = await fetch(`http://localhost:5000/allUsers/musician/${user?.email}`, {
+            const res = await fetch(`https://the-music-mystrey-server.vercel.app/allUsers/musician/${user?.email}`, {
                 headers:{
                     authorization: `bearer ${token}`
                 }

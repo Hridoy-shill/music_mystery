@@ -22,7 +22,7 @@ const AddClass = () => {
         const newClass = { className, instructorEmail, musicianName, Seats, Price, photo, status, feedback, Students};
         const token = localStorage.getItem('access-token');
 
-        fetch('http://localhost:5000/addClasses', {
+        fetch('https://the-music-mystrey-server.vercel.app/addClasses', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

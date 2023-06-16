@@ -9,7 +9,7 @@ const AllUsers = () => {
 
     const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
         const token = localStorage.getItem('access-token');
-        const res = await fetch('http://localhost:5000/allUsers', {
+        const res = await fetch('https://the-music-mystrey-server.vercel.app/allUsers', {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -20,7 +20,7 @@ const AllUsers = () => {
 
     // Make Admin functionality
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/allUsers/admin/${id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/allUsers/admin/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -41,7 +41,7 @@ const AllUsers = () => {
 
     //Make Musician functionality 
     const handleMakeMusician = id => {
-        fetch(`http://localhost:5000/allUsers/musician/${id}`, {
+        fetch(`https://the-music-mystrey-server.vercel.app/allUsers/musician/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -72,7 +72,7 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/allUsers/${id}`, {
+                fetch(`https://the-music-mystrey-server.vercel.app/allUsers/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
