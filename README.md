@@ -1,6 +1,6 @@
-# Car World
+# Music Mystery
 
-A single page website based on Toy car's.
+A single page website based on Music course's.
 
 ## Live site link
 https://car-world-77c5e.web.app/
@@ -15,8 +15,9 @@ https://car-world-77c5e.web.app/
 
 ## About Webpage
 
-- It a Toy car based website.
-- This is a e-ecommerce type website.there have many category's of toy car's.
-- In this website user's can order toy's from home.
-- also admin can add toy's with there own account.
-- In this website admin can update and delete his/her added toy's.
+- It a Course selling based website.
+- This is a educational type website.there have many category's of courses.
+- In this website user's can enroll courses from home.
+- also musician can add courses with there own account.
+- also admin can manage users with there own account.
+- and for more visit live side....

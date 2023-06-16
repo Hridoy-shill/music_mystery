@@ -19,15 +19,15 @@ const PopularClassesSection = () => {
 
             <div className='grid md:grid-cols-2 gap-3 p-10'>
                 {
-                    popularClasses.map(popularClass => <div className="card card-side bg-base-100 shadow-xl w-full p-10 gap-4 items-center border-2 hover:border-teal-500 mt-3 duration-500 transition ease-in-out delay-150 hover:-translate-y-3">
+                    popularClasses.map(popularClass => <div className="card card-side bg-base-100 shadow-xl w-full p-6 gap-4 items-center border-2 hover:border-teal-500 mt-3 duration-500 transition ease-in-out delay-150 hover:-translate-y-3">
                         <div className='w-[30%]'>
-                            <img className='rounded-md' src={popularClass.photo} />
+                            <img className='rounded-md w-full' src={popularClass.photo} />
                         </div>
                         <div className="w-[70%] space-y-2">
-                            <h2 className="card-title text-3xl text-teal-500">Course: {popularClass.className}</h2>
-                            <p className='text-base font-semibold'><span className='text-xl font-semibold'>Musician Name:</span> {popularClass.musicianName}</p>
-                            <p className='text-base font-semibold'><span className='text-xl font-semibold'>Musician Email:</span> {popularClass.instructorEmail}</p>
-                            <p className='text-base font-semibold'><span className='text-xl font-semibold'>Price:</span> ${popularClass.Price}</p>
+                            <h2 className="card-title text-xl text-teal-500">Course: {popularClass.className}</h2>
+                            <p className='text-base font-semibold'><span className='text-lg font-semibold'>Musician Name:</span> {popularClass.musicianName}</p>
+                            <p className='text-base font-semibold'><span className='text-lg font-semibold'>Musician Email:</span> {popularClass.instructorEmail}</p>
+                            <p className='text-base font-semibold'><span className='text-lg font-semibold'>Price:</span> ${popularClass.Price}</p>
                         </div>
                     </div>)
                 }

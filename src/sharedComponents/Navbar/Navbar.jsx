@@ -46,16 +46,15 @@ const Navbar = () => {
                     </label>
 
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-teal-500 w-52">
-                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
+                    <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Home</NavLink></li>
+                    
+                    <li><NavLink to={'/instructors'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Musician's</NavLink></li>
 
-                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Instructors</NavLink></li>
+                    <li><NavLink to={'/allClasses'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
 
-                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Classes</NavLink></li>
-
-                        <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-300 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>
+                    {user && <li><NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
                     </ul>
                 </div>
-
                 <Link to={'/'} className='flex items-center'>
                     <img className='w-16 h-14' src={logo} />
                     <h3 className='md:text-3xl  md:font-semibold text-white'>Music <span className='font-light'>Mystery</span></h3>
@@ -73,7 +72,9 @@ const Navbar = () => {
                     {user && <li><NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? 'text-yellow-300 text-xl duration-500 font-bold' : 'font-bold text-base text-white duration-500')}>Dashboard</NavLink></li>}
                 </ul>
             </div>
+
             <div className="navbar-end pe-5 space-x-4">
+
                 {user ?
                     <>
                         <img className='w-12 h-12 rounded-full hover:bg-yellow-300 border-2 border-white hover:border-yellow-300 duration-500' src={user.photoURL} alt="" title={user.displayName} />
