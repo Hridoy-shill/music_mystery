@@ -4,8 +4,10 @@ import Tittle from '../../Common_Component\'s/Tittle';
 import { FaRegSun } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const MyClasses = () => {
+    useTitle('Dashboard/My Classes')
     const {user} = useContext(AuthContext)
     console.log(user);
     const {email} = user || {};

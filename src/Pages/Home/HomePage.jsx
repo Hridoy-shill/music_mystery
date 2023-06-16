@@ -3,9 +3,11 @@ import Banner from './HomeComponents/BannerSection/Banner';
 import StudentReviews from '../StudentReviews/StudentReviews';
 import PopularClassesSection from './HomeComponents/PopularClassesSection/PopularClassesSection';
 import PopularInstructors from './HomeComponents/PopularInstructors/PopularInstructors';
+import useTitle from '../../Hooks/useTitle';
 
 
 const HomePage = () => {
+    useTitle('Home')
     return (
         <div>
             <Banner></Banner>

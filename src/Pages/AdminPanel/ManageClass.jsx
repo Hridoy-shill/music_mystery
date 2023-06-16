@@ -2,11 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
-import { reload } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 
 const ManageClass = () => {
-
+    useTitle('Dashboard/Manage Classes')
     const [classes, setClasses] = useState([])
     // const [reload, setReload] = useState()
     console.log(classes);

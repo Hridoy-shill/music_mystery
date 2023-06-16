@@ -2,8 +2,10 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import useTitle from '../../Hooks/useTitle';
 
 const UpdateClass = () => {
+    useTitle('Dashboard/Update Class')
     const classDetails = useLoaderData()
     console.log(classDetails);
     const { className, Price, Seats, photo, _id } = classDetails

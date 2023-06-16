@@ -4,11 +4,12 @@ import useSelectedClassData from '../../Hooks/useSelectedClassData';
 import { Link } from 'react-router-dom';
 import { FaRegTrashAlt, FaWallet } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import useTitle from '../../Hooks/useTitle';
 
 
 
 const MySelectedClasses = () => {
-
+    useTitle('Dashboard/My Selected Classes')
     const [myClasses, setMyClasses] = useState([])
     console.log(myClasses);
 

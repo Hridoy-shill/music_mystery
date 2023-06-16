@@ -3,8 +3,10 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
+import useTitle from '../../Hooks/useTitle';
 
 const AddClass = () => {
+    useTitle('Dashboard/Add Class')
     const { user } = useContext(AuthContext);
     // console.log(user);
     

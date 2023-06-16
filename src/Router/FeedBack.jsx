@@ -2,9 +2,11 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../Hooks/useTitle';
 
 const FeedBack = () => {
 
+    useTitle('Dashboard/Feedback')
     // const data = useLoaderData();
     // console.log(data);
 

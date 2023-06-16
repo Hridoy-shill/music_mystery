@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Tittle from '../../Common_Component\'s/Tittle';
+import useTitle from '../../Hooks/useTitle';
 
 const MyEnrolledClasses = () => {
+    useTitle('Dashboard/My Enrolled Classes')
     const [myClasses, setMyClasses] = useState([]);
     console.log(myClasses);
 

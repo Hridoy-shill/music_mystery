@@ -4,17 +4,19 @@ import CheckoutForm from './CheckoutForm';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Tittle from '../../Common_Component\'s/Tittle';
+import useTitle from '../../Hooks/useTitle';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Pk);
 const Payment = () => {
+    useTitle('Payment')
     const [classData, setClassData] = useState({});
     console.log(classData);
-    
+
     const { Price, Seats, className, photo, musicianName, userEmail, classId } = classData;
 
-    const allData ={Seats, className, photo, musicianName, userEmail, classId}
-    
+    const allData = { Seats, className, photo, musicianName, userEmail, classId }
+
     console.log(Price, allData);
 
     const { id } = useParams();

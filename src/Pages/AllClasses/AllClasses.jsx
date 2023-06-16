@@ -8,9 +8,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import useSelectedClassData from '../../Hooks/useSelectedClassData';
 import Tittle from '../../Common_Component\'s/Tittle';
+import useTitle from '../../Hooks/useTitle';
 
 const AllClasses = () => {
 
+    useTitle('All Courses')
     const { user } = useContext(AuthContext)
     console.log(user);
 

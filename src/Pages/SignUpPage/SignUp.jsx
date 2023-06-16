@@ -9,10 +9,11 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
 import SocialLogin from '../../sharedComponents/SocialLogin/SocialLogin';
+import useTitle from '../../Hooks/useTitle';
 
 
 const SignUp = () => {
-
+    useTitle('SignUp')
     const [show, setShow] = useState()
     const [error, setError] = useState('')
     const { createNewUser } = useContext(AuthContext);

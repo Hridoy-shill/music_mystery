@@ -5,9 +5,11 @@ import { FaUsersCog, FaUserShield, FaUser, FaUserGraduate, FaBook, FaBookReader,
 import { AuthContext } from '../Provider/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
 import useMusician from '../Hooks/useMusician';
+import useTitle from '../Hooks/useTitle';
 
 const DashboardLayout = () => {
 
+    useTitle('Dashboard')
     const [,isAdmin] = useAdmin();
     const [,isMusician] = useMusician();
     // console.log(isAdmin, isMusician);

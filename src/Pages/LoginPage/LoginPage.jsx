@@ -7,8 +7,10 @@ import { FaGoogle, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../sharedComponents/SocialLogin/SocialLogin';
+import useTitle from '../../Hooks/useTitle';
 
 const LoginPage = () => {
+    useTitle('LogIn')
 
     const [show, setShow] = useState()
     const [error, setError] = useState('')

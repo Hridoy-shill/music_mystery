@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Tittle from '../../Common_Component\'s/Tittle';
+import useTitle from '../../Hooks/useTitle';
 
 
 const AllInstructors = () => {
-
+    useTitle('All Musicians')
     const [musicians, setMusicians] = useState([]);
     console.log(musicians);
 

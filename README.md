@@ -3,7 +3,7 @@
 A single page website based on Music course's.
 
 ## Live site link
-https://car-world-77c5e.web.app/
+https://the-music-mystery.web.app/
 
 
 ## Technology

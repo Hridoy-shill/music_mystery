@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Tittle from '../../Common_Component\'s/Tittle';
+import useTitle from '../../Hooks/useTitle';
 
 const PaymentHistory = () => {
+    useTitle('Dashboard/Payment History')
     const [payments, setPayment] = useState([]);
     const { user } = useContext(AuthContext);
     const { email } = user || {}

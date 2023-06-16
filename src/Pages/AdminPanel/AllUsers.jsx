@@ -3,10 +3,12 @@ import React from 'react';
 import { FaTrash, FaUser, FaUserGraduate, FaUserShield, FaUserSlash } from 'react-icons/fa';
 import Tittle from '../../Common_Component\'s/Tittle';
 import Swal from 'sweetalert2';
+import useTitle from '../../Hooks/useTitle';
 
 
 const AllUsers = () => {
 
+    useTitle('Dashboard/All Users')
     const { data: users = [], refetch } = useQuery(['allUsers'], async () => {
         const token = localStorage.getItem('access-token');
         const res = await fetch('https://the-music-mystrey-server.vercel.app/allUsers', {
