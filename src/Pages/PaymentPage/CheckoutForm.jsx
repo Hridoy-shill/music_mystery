@@ -6,9 +6,9 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import axios from 'axios';
 
 
-const CheckoutForm = ({ Price , allData}) => {
+const CheckoutForm = ({ Price, allData }) => {
     console.log(allData);
-    const{Seats, className, photo, musicianName, userEmail, classId} = allData;
+    const { Seats, className, photo, musicianName, userEmail, classId } = allData;
     // console.log(Seats, className, photo, musicianName, userEmail);
     const stripe = useStripe();
     const elements = useElements();
@@ -18,21 +18,21 @@ const CheckoutForm = ({ Price , allData}) => {
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
-    
+
     console.log(Price);
     useEffect(() => {
-       
+
         if (Price > 0) {
             console.log('19 noline', Price);
-            axios.post('https://the-music-mystrey-server.vercel.app/create-payment-intent', {Price})
-            .then(res => {
-                console.log(res.data);
-                setClientSecret(res.data.clientSecret)
-            })
+            axios.post('https://the-music-mystrey-server.vercel.app/create-payment-intent', { Price })
+                .then(res => {
+                    console.log(res.data);
+                    setClientSecret(res.data.clientSecret)
+                })
         }
 
         // console.log(data.clientSecret);
-        
+
     }, [Price])
 
     const handleSubmit = async (event) => {
@@ -87,18 +87,27 @@ const CheckoutForm = ({ Price , allData}) => {
         console.log(paymentIntent);
         setProcessing(false)
 
-        if(paymentIntent.status === 'succeeded'){
+        if (paymentIntent.status === 'succeeded') {
             const transactionId = paymentIntent.id;
             setTransactionId(transactionId)
 
-            const payment = {user: user?.email, transactionId:paymentIntent.id, Price, Seats:Seats, courseName:className, courseImg:photo, teacherName:musicianName, studentEmail:userEmail, classID: classId, Date: new Date()}
+            const payment = { user: user?.email, transactionId: paymentIntent.id, Price, Seats: Seats, courseName: className, courseImg: photo, teacherName: musicianName, studentEmail: userEmail, classID: classId, Date: new Date() }
             console.log(payment);
 
-            axios.post('https://the-music-mystrey-server.vercel.app/allPayments', {payment})
-            .then(res => {
-                console.log(res.data);
+            axios.post('https://the-music-mystrey-server.vercel.app/allPayments', { payment })
+                .then(res => {
+                    console.log(res.data);
+                })
+
+            fetch(`https://the-music-mystrey-server.vercel.app/updateSeat/${classId}`, {
+                method: 'PATCH'
             })
-            
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                })
+
+
         }
 
     };
