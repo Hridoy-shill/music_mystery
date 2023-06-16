@@ -9,8 +9,15 @@ const HomePage = () => {
     return (
         <div>
             <Banner></Banner>
-            <PopularClassesSection></PopularClassesSection>
-            <PopularInstructors></PopularInstructors>
+
+            <div>
+                <PopularClassesSection></PopularClassesSection>
+            </div>
+
+            <div>
+                <PopularInstructors></PopularInstructors>
+            </div>
+
             <StudentReviews></StudentReviews>
         </div>
     );

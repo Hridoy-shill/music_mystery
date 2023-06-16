@@ -7,7 +7,8 @@ import axios from 'axios';
 
 
 const CheckoutForm = ({ Price , allData}) => {
-    const{Seats, className, photo, musicianName, userEmail} = allData;
+    console.log(allData);
+    const{Seats, className, photo, musicianName, userEmail, classId} = allData;
     // console.log(Seats, className, photo, musicianName, userEmail);
     const stripe = useStripe();
     const elements = useElements();
@@ -90,7 +91,7 @@ const CheckoutForm = ({ Price , allData}) => {
             const transactionId = paymentIntent.id;
             setTransactionId(transactionId)
 
-            const payment = {user: user?.email, transactionId:paymentIntent.id, Price, Seats:Seats, courseName:className, courseImg:photo, teacherName:musicianName, studentEmail:userEmail}
+            const payment = {user: user?.email, transactionId:paymentIntent.id, Price, Seats:Seats, courseName:className, courseImg:photo, teacherName:musicianName, studentEmail:userEmail, classID: classId, Date: new Date()}
             console.log(payment);
 
             axios.post('http://localhost:5000/allPayments', {payment})

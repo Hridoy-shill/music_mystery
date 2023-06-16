@@ -16,9 +16,11 @@ const DashboardLayout = () => {
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col items-center justify-center">
+                
+                <p className='text-5xl text-center font-bold border-2 p-5 border-teal-500 hover:bg-teal-500 hover:bg-opacity-50 rounded animate-bounce'>Well come to Dashboard</p>
 
                 <Outlet></Outlet>
-
+                
                 <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
             </div>
@@ -34,8 +36,6 @@ const DashboardLayout = () => {
 
                     {isAdmin && (
                         <div className='space-y-3'>
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserShield className='w-5 h-5'></FaUserShield> Admin Home</NavLink></li>
-
                             <li><NavLink to={'/dashboard/manageClass'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBook className='w-5 h-5'></FaBook> Manage Classes</NavLink></li>
 
                             <li><NavLink to={'/dashboard/allUsers'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUsersCog className='w-5 h-5'></FaUsersCog>Manage Users</NavLink></li>
@@ -44,8 +44,6 @@ const DashboardLayout = () => {
 
                     {isMusician && (
                         <div className='space-y-3'>
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUserGraduate className='w-5 h-5'></FaUserGraduate>Musician Home</NavLink></li>
-
                             <li><NavLink to={'/dashboard/addClass'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookMedical className='w-5 h-5'></FaBookMedical>Add a Class</NavLink></li>
 
                             <li><NavLink to={'/dashboard/myClasses'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaSwatchbook className='w-5 h-5'></FaSwatchbook>My Classes</NavLink></li>
@@ -54,11 +52,11 @@ const DashboardLayout = () => {
 
                     {!isAdmin && !isMusician && (
                         <div className='space-y-3'>
-                            <li><NavLink to={'/'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaUser className='w-5 h-5'></FaUser> Student Home</NavLink></li>
-
                             <li><NavLink to={'/dashboard/mySelectedClasses'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookOpen className='w-5 h-5'></FaBookOpen> My Selected Classes</NavLink></li>
 
                             <li><NavLink to={'/dashboard/myEnrolledClasses'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>My Enrolled Classes</NavLink></li>
+
+                            <li><NavLink to={'/dashboard/paymentHistory'} className={({ isActive }) => (isActive ? 'text-black bg-yellow-300 text-lg duration-300 font-bold hover:bg-yellow-300' : 'font-bold text-base  border-s-4 border-yellow-300 hover:bg-yellow-300 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-110 duration-300 me-5')}><FaBookReader className='w-5 h-5'></FaBookReader>Payment History</NavLink></li>
                         </div>
                     )}
 

@@ -7,16 +7,18 @@ import Tittle from '../../Common_Component\'s/Tittle';
 
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Pk);
-
 const Payment = () => {
     const [classData, setClassData] = useState({});
+    console.log(classData);
     
-    const { Price, Seats, className, photo, musicianName, userEmail } = classData;
-    const allData ={Seats, className, photo, musicianName, userEmail}
+    const { Price, Seats, className, photo, musicianName, userEmail, classId } = classData;
+
+    const allData ={Seats, className, photo, musicianName, userEmail, classId}
+    
     console.log(Price, allData);
 
     const { id } = useParams();
-    console.log(id);
+    // console.log(id);
 
     useEffect(() => {
         fetch(`http://localhost:5000/singleClassData/${id}`)

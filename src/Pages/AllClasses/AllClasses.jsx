@@ -101,7 +101,7 @@ const AllClasses = () => {
                             <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Course fee:</span>${singleClass.Price}</p>
                             <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Musician Name:</span> {singleClass.musicianName}</p>
                             <p className="card-title mx-auto font-bold text-lg mt-2"><span className='text-xl text-teal-500'>Email:</span> {singleClass.instructorEmail}</p>
-                            <button onClick={() => handleSelect(singleClass)} className={`${singleClass.Seats === 0 || isAdmin === true || isMusician === true ? 'btn-disabled' : ''} btn w-full bg-teal-500 hover:bg-teal-500 text-base font-bold mt-10`}>Select Course</button>
+                            <button onClick={() => handleSelect(singleClass)} className={`${singleClass.Seats === 0 || isAdmin === true || isMusician === true ? 'btn-disabled' : ''} btn w-full bg-teal-500 hover:bg-teal-500 text-base font-bold mt-10 text-white`}>Select Course</button>
                         </div>
                     </div>)
                 }

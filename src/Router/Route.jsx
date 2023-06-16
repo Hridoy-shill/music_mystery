@@ -7,9 +7,8 @@ import SignUp from "../Pages/SignUpPage/SignUp";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import AllUsers from "../Pages/AdminPanel/Allusers";
 import AdminRoute from "./AdminRoute";
-import AdminHome from "../Pages/AdminPanel/AdminHome";
 import ManageClass from "../Pages/AdminPanel/ManageClass";
-import MusicianHome from "../Pages/MusicianPanel/MusicianHome";
+
 import AddClass from "../Pages/MusicianPanel/AddClass";
 import MyClasses from "../Pages/MusicianPanel/MyClasses";
 import MusicianRoute from "./MusicianRoute";
@@ -20,6 +19,7 @@ import FeedBack from "./FeedBack";
 import MySelectedClasses from "../Pages/StudentPanel/MySelectedClasses";
 import MyEnrolledClasses from "../Pages/StudentPanel/MyEnrolledClasses";
 import Payment from "../Pages/PaymentPage/Payment";
+import PaymentHistory from "../Pages/StudentPanel/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -55,10 +55,6 @@ const router = createBrowserRouter([
         element: <DashboardLayout></DashboardLayout>,
         children: [
             {
-                path: '/dashboard/adminHome',
-                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
-            },
-            {
                 path: '/dashboard/manageClass',
                 element: <AdminRoute><ManageClass></ManageClass></AdminRoute>
             },
@@ -74,10 +70,7 @@ const router = createBrowserRouter([
 
             // musician routes
 
-            {
-                path: '/dashboard/musicianHome',
-                element: <MusicianRoute><MusicianHome></MusicianHome></MusicianRoute>
-            },
+        
             {
                 path: '/dashboard/addClass',
                 element: <MusicianRoute><AddClass></AddClass></MusicianRoute>
@@ -102,9 +95,13 @@ const router = createBrowserRouter([
                 element:<MyEnrolledClasses></MyEnrolledClasses>
             },
             {
+                path:'/dashboard/paymentHistory',
+                element:<PaymentHistory></PaymentHistory>
+            },
+            {
                 path:'/dashboard/payment/:id',
                 element:<Payment></Payment>,
-            }
+            },
 
         ]
     }
