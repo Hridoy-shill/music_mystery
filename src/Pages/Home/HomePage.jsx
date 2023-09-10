@@ -6,6 +6,7 @@ import PopularInstructors from './HomeComponents/PopularInstructors/PopularInstr
 import useTitle from '../../Hooks/useTitle';
 import AboutBanner from './HomeComponents/AboutBannerSection/AboutBanner';
 import MusicGroups from './HomeComponents/MusicGroupSection/MusicGroups';
+import TotalMembers from './HomeComponents/TotalMembers/TotalMembers';
 
 
 const HomePage = () => {
@@ -27,6 +28,10 @@ const HomePage = () => {
 
             <div>
                 <MusicGroups></MusicGroups>
+            </div>
+
+            <div>
+                <TotalMembers></TotalMembers>
             </div>
 
             <StudentReviews></StudentReviews>
